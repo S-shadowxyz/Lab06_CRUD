@@ -33,7 +33,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
 
         private void HOME_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Suppliers_Click(object sender, EventArgs e)
@@ -41,6 +41,30 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             Suppliers suppliers = new Suppliers();
             suppliers.ShowDialog();
             this.Hide();
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            FRMLogin f = new FRMLogin();
+            f.ShowDialog();
+            if (f.loginstatus == "pass")
+            {
+                this.Text = "Northwind Program";
+                txtshowID.Text += "Id : " + f.employeeID.ToString() + " name :" + f.employeeName;
+                txtshowposition.Text += " position :" + f.employeePosition;
+                //this.Text = "Northwind Id : " + f.employeeID.ToString();
+                //this.Text += " name :" + f.employeeName + " position :" + f.employeePosition;
+                groupBox1.Visible = true;
+                logout.Visible = true;
+                login.Visible = false;
+            }
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            logout.Visible = false;
+            login.Visible = true;
         }
     }
 }
