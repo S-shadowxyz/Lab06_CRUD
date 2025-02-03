@@ -18,5 +18,13 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             connection.Open();
             return connection;
         }
+        public static SqlConnection ConnectMinimart() {
+            string server = @".\sqlexpress";
+            string db = "MiniMart";
+            string strCon = string.Format(@"Data Source={0};initial catalog={1};" + "Integrated security = true; Encrypt = false", server, db);
+            SqlConnection connection = new SqlConnection(strCon);
+            connection.Open();
+            return connection;
+        }
     }
 }

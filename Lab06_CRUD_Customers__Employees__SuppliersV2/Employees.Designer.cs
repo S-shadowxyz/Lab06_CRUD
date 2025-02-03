@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Home = new Button();
             btnReset = new Button();
             txtDeleteEmployees = new Button();
             btninsertCustomer = new Button();
@@ -36,17 +35,6 @@
             btnEdit = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
-            // 
-            // Home
-            // 
-            Home.Location = new Point(41, 25);
-            Home.Margin = new Padding(3, 2, 3, 2);
-            Home.Name = "Home";
-            Home.Size = new Size(82, 22);
-            Home.TabIndex = 18;
-            Home.Text = "Home";
-            Home.UseVisualStyleBackColor = true;
-            Home.Click += Home_Click;
             // 
             // btnReset
             // 
@@ -115,7 +103,6 @@
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1210, 506);
             Controls.Add(btnEdit);
-            Controls.Add(Home);
             Controls.Add(btnReset);
             Controls.Add(txtDeleteEmployees);
             Controls.Add(btninsertCustomer);
@@ -129,8 +116,6 @@
         }
 
         #endregion
-
-        private Button Home;
         private Button btnReset;
         private Button txtDeleteEmployees;
         private Button btninsertCustomer;

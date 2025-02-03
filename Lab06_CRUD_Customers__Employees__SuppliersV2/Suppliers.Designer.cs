@@ -33,7 +33,6 @@
             btnReset = new Button();
             txtDeleteSuppliers = new Button();
             btninsertSuppliers = new Button();
-            Home = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
@@ -97,24 +96,12 @@
             btninsertSuppliers.UseVisualStyleBackColor = true;
             btninsertSuppliers.Click += btninsertSuppliers_Click;
             // 
-            // Home
-            // 
-            Home.Location = new Point(10, 23);
-            Home.Margin = new Padding(3, 2, 3, 2);
-            Home.Name = "Home";
-            Home.Size = new Size(82, 22);
-            Home.TabIndex = 25;
-            Home.Text = "Home";
-            Home.UseVisualStyleBackColor = true;
-            Home.Click += Home_Click;
-            // 
             // Suppliers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1143, 492);
-            Controls.Add(Home);
             Controls.Add(btnSuppliers);
             Controls.Add(btnReset);
             Controls.Add(txtDeleteSuppliers);
@@ -135,6 +122,5 @@
         private Button btnReset;
         private Button txtDeleteSuppliers;
         private Button btninsertSuppliers;
-        private Button Home;
     }
 }

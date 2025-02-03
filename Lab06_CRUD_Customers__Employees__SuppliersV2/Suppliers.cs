@@ -51,8 +51,9 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
         // ปุ่ม Home สำหรับกลับไปยังฟอร์มหลัก
         private void Home_Click(object sender, EventArgs e)
         {
-            HOME home = new HOME();
-            home.Show();
+            HOME HOME = new HOME();
+            HOME.loginstatus = "pass";
+            HOME.Show();
             this.Hide();
         }
 
