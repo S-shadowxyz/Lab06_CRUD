@@ -28,7 +28,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
 
         private void FRMMinimartMSi_Load(object sender, EventArgs e)
         {
-            conn = connectDB.ConnectMinimart();
+            conn = connectDB.ConnectNortwind();
             ListViewFormat();
             ClearProductData();
             txtempID.Text = this.empID.ToString();
@@ -80,7 +80,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             if (e.KeyCode == Keys.Enter)
             {
                 string sql = "Select EmployeeID,Title+FirstName+ SPACE(2)+ LastName as empName"
-                + " , Position from employees where employeeID = @employeeID";
+                + " , Title from employees where employeeID = @employeeID";
                 SqlCommand comm = new SqlCommand(sql, conn);
                 comm.Parameters.AddWithValue("@employeeID", txtempID.Text);
                 if (conn.State == ConnectionState.Open)
@@ -222,7 +222,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             int lastOrderID = 0; //จะเอําไว้เก็บรหัสที่ใหม่ที่สุดตอนที่ insert order แล ้ว
             if (txtempID.Text.Trim() == "")
             {
-                MessageBox.Show("โปรดระบผุ ูข้ ํายสนิคํา้กอ่ น", "มีข ้อผิดพลําด");
+                MessageBox.Show("โปรดระบุข้อมูลสินค้า", "มีข้อผิดพลําด");
                 txtempID.Focus();
                 return;
             }
@@ -234,29 +234,28 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
                     //ประกําศเริ่ม Transaction
                     conn.Open();
                     tr = conn.BeginTransaction();
-                    string sql = "insert into Receipts(ReceiptDate,EmployeeID,TotalCash)"
-                    + " values (getdate(),@EmployeeID,@TotalCash)";
+                    string sql = "insert into Orders(OrderDate,EmployeeID)"
+                    + " values (getdate(),@EmployeeID)";
                     SqlCommand comm = new SqlCommand(sql, conn, tr);
                     comm.Parameters.AddWithValue("@EmployeeID", txtempID.Text.Trim());
-                    comm.Parameters.AddWithValue("@TotalCash", lblNetPrice.Text);
                     comm.ExecuteNonQuery();
                     //อ่ําน OrderID ลํา่ สดุ ใสไ่ วใ้นตัวแปร lastOrderID
-                    string sql1 = "select top 1 ReceiptID from Receipts order by ReceiptID desc";
+                    string sql1 = "select top 1 OrderID from Orders order by OrderID desc";
                     SqlCommand comm1 = new SqlCommand(sql1, conn, tr);
                     SqlDataReader dr = comm1.ExecuteReader();
                     if (dr.HasRows)
                     {
                         dr.Read();
-                        lastOrderID = dr.GetInt32(dr.GetOrdinal("ReceiptID"));
+                        lastOrderID = dr.GetInt32(dr.GetOrdinal("OrderID"));
                     }
                     dr.Close();
                     //เพมิ่ ขอ้มลู รํายกํารสนิคํา้ OrderDetail ที่ตรงกับ lastOrderID
                     for (int i = 0; i <= lsvProducts.Items.Count - 1; i++)
                     {
-                        string sql2 = "insert into Details(ReceiptID,ProductID,UnitPrice,Quantity)"
-                        + " values(@ReceiptID,@ProductID,@UnitPrice,@Quantity)";
+                        string sql2 = "insert into [Order Details](OrderID,ProductID,UnitPrice,Quantity)"
+                        + " values(@OrderID,@ProductID,@UnitPrice,@Quantity)";
                         SqlCommand comm3 = new SqlCommand(sql2, conn, tr);
-                        comm3.Parameters.AddWithValue("@ReceiptID", lastOrderID);
+                        comm3.Parameters.AddWithValue("@OrderID", lastOrderID);
                         comm3.Parameters.AddWithValue("@ProductID", lsvProducts.Items[i].SubItems[0].Text);
                         comm3.Parameters.AddWithValue("@UnitPrice", lsvProducts.Items[i].SubItems[2].Text);
                         comm3.Parameters.AddWithValue("@Quantity", lsvProducts.Items[i].SubItems[3].Text);
@@ -264,7 +263,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
                     }
                     tr.Commit();
                     conn.Close();
-                    MessageBox.Show("บันทึกรํายกํารขํายเรียบร้อยแล ้ว", "ผลกํารท ํางําน");
+                    MessageBox.Show("บันทึกรํายกํารขํายเรียบร้อยแล้ว", "ผลกํารท ํางําน");
                 }
                 btnCancle.PerformClick(); //สั่งใหไ้ปกดป่ม ุ cancel เคลีย์หน้ําจอทั้งหมดใหม่เพื่อเริ่มรํายกํารใหม่
             }
