@@ -11,7 +11,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FRMMinimartMSi());
+            Application.Run(new HOME());
         }
     }
 }

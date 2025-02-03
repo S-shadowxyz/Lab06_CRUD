@@ -23,14 +23,14 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
         {
             Customer form1 = new Customer();
             form1.ShowDialog();
-            
+
         }
 
         private void Employees_Click(object sender, EventArgs e)
         {
             Employees employees = new Employees();
             employees.ShowDialog();
-            
+
         }
 
         private void HOME_Load(object sender, EventArgs e)
@@ -42,14 +42,14 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
         {
             Suppliers suppliers = new Suppliers();
             suppliers.ShowDialog();
-            
+
         }
 
         private void login_Click(object sender, EventArgs e)
         {
             FRMLogin f = new FRMLogin();
             f.ShowDialog();
-            if (f.loginstatus == "pass" || loginstatus == "pass" )
+            if (f.loginstatus == "pass" || loginstatus == "pass")
             {
                 this.Text = "Northwind Program";
                 txtshowID.Text += "Id : " + f.employeeID.ToString() + " name :" + f.employeeName;
@@ -68,6 +68,17 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
             logout.Visible = false;
             login.Visible = true;
             loginstatus = null;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FRMMinimartMSi fm = new FRMMinimartMSi();
+            fm.ShowDialog();
+        }
+
+        private void txtshowposition_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

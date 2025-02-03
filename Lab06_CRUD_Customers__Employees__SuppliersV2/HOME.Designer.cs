@@ -36,13 +36,14 @@
             txtshowID = new TextBox();
             login = new Button();
             logout = new Button();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // customer
             // 
             customer.Font = new Font("Segoe UI", 12F);
-            customer.Location = new Point(19, 202);
+            customer.Location = new Point(19, 246);
             customer.Margin = new Padding(3, 2, 3, 2);
             customer.Name = "customer";
             customer.Size = new Size(218, 66);
@@ -54,7 +55,7 @@
             // Employees
             // 
             Employees.Font = new Font("Segoe UI", 12F);
-            Employees.Location = new Point(19, 116);
+            Employees.Location = new Point(19, 157);
             Employees.Margin = new Padding(3, 2, 3, 2);
             Employees.Name = "Employees";
             Employees.Size = new Size(218, 66);
@@ -66,7 +67,7 @@
             // Suppliers
             // 
             Suppliers.Font = new Font("Segoe UI", 12F);
-            Suppliers.Location = new Point(19, 283);
+            Suppliers.Location = new Point(19, 339);
             Suppliers.Margin = new Padding(3, 2, 3, 2);
             Suppliers.Name = "Suppliers";
             Suppliers.Size = new Size(218, 66);
@@ -77,14 +78,15 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(txtshowposition);
             groupBox1.Controls.Add(txtshowID);
             groupBox1.Controls.Add(Suppliers);
             groupBox1.Controls.Add(Employees);
             groupBox1.Controls.Add(customer);
-            groupBox1.Location = new Point(39, 66);
+            groupBox1.Location = new Point(39, 82);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(261, 351);
+            groupBox1.Size = new Size(261, 422);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Visible = false;
@@ -94,17 +96,18 @@
             txtshowposition.BackColor = SystemColors.InactiveCaption;
             txtshowposition.BorderStyle = BorderStyle.None;
             txtshowposition.Font = new Font("Segoe UI", 11F);
-            txtshowposition.Location = new Point(6, 66);
+            txtshowposition.Location = new Point(6, 123);
             txtshowposition.Name = "txtshowposition";
             txtshowposition.Size = new Size(254, 20);
             txtshowposition.TabIndex = 8;
+            txtshowposition.TextChanged += txtshowposition_TextChanged;
             // 
             // txtshowID
             // 
             txtshowID.BackColor = SystemColors.InactiveCaption;
             txtshowID.BorderStyle = BorderStyle.None;
             txtshowID.Font = new Font("Segoe UI", 11F);
-            txtshowID.Location = new Point(6, 22);
+            txtshowID.Location = new Point(6, 84);
             txtshowID.Name = "txtshowID";
             txtshowID.Size = new Size(254, 20);
             txtshowID.TabIndex = 6;
@@ -132,12 +135,22 @@
             logout.Visible = false;
             logout.Click += logout_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(6, 22);
+            button1.Name = "button1";
+            button1.Size = new Size(247, 44);
+            button1.TabIndex = 8;
+            button1.Text = "ขายสินค้า";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // HOME
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(338, 450);
+            ClientSize = new Size(338, 510);
             Controls.Add(logout);
             Controls.Add(login);
             Controls.Add(groupBox1);
@@ -160,5 +173,6 @@
         private TextBox txtshowID;
         private Button logout;
         private TextBox txtshowposition;
+        private Button button1;
     }
 }

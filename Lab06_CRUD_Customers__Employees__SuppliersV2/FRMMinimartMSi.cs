@@ -79,7 +79,7 @@ namespace Lab06_CRUD_Customers__Employees__SuppliersV2
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string sql = "Select EmployeeID,Title+FirstName+ SPACE(2)+ LastName as empName"
+                string sql = "Select EmployeeID,TitleOfCourtesy+FirstName+ SPACE(2)+ LastName as empName"
                 + " , Title from employees where employeeID = @employeeID";
                 SqlCommand comm = new SqlCommand(sql, conn);
                 comm.Parameters.AddWithValue("@employeeID", txtempID.Text);
